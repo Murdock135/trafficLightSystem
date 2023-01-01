@@ -20,6 +20,9 @@ int TrafficLightOutput_3l = 9;
 int TrafficLightOutput_3r = 9;
 int TrafficLightOutput_4l = 9;
 int TrafficLightOutput_4r = 9;
+//set up roads
+road oneL, oneR, twoL, twoR, threeL, threeR, fourL, fourR;
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -43,18 +46,24 @@ void setup() {
 
 
   Serial.begin(9600);
-  //set up roads
-  road oneL, oneR, twoL, twoR, threeL, threeR, fourL, fourR;
   //set up traffic Lights
-  oneL.setupTL(int pin); 
+  oneL.setupTL( TrafficLightOutput_1l); 
+  oneR.setupTL(TrafficLightOutput_1r);
+  twoL.setupTL(TrafficLightOutput_2l);
+  twoR.setupTL(TrafficLightOutput_2r);
+  threeL.setupTL(TrafficLightOutput_3l);
+  threeR.setupTL(TrafficLightOutput_3r);
+  fourL.setupTL(TrafficLightOutput_4l);
+  fourL.setupTL(TrafficLightOutput_4r);
   //keep all traffic Lights turned off first 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  control();
+  
+  delay(3000);
 }
 
 void control(){
-  
+    oneL.senseCar();
+
 }
