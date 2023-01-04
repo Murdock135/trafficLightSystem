@@ -1,29 +1,43 @@
 #pragma once
-
+#include "Arduino.h"
 #include "trafficLight.h"
 
-class road {
+class road : public trafficLight {
 private:
   trafficLight tl;
 public:
-  int carCount = 0;
-  int sensorPin;
-  void setupTL(int pin);
-  void senseCar();
+  int lCount = 0;
+  int rCount = 0;
+  int leftSensor;
+  int rightSensor;
+  road();
+  void setup(int S0, int S1, int leftSensor, int rightSensor);
+  void senseCarLeft();
+  void senseCarRight();
   void loop();
 };
 
-void road::senseCar(){
-  if(digitalRead(sensorPin)==LOW)
-    ++carCount;
+void road::setup(int S0, int S1, int leftSensor, int rightSensor){
+  //setup demux pins for traffic light
+  tl.S0 = S0;
+  tl.S1 = S1;
+  tl.setup();
+  //setup sensors
+  pinMode(leftSensor, OUTPUT);
+  pinMode(rightSensor, OUTPUT);
 }
 
-void road::setupTL(int pin){
-  trafficLight newTL(pin);
-  tl = newTL;
+void road::senseCarLeft(){
+  if(digitalRead(leftSensor)==LOW);
+    ++lCount;
+}
+
+void road::senseCarRight(){
+  if(digitalRead(rightSensor)==LOW);
+    ++rCount;
 }
 
 void road::loop(){
-  senseCar();
-
+  senseCarLeft();
+  senseCarRight();
 }
