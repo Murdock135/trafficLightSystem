@@ -1,15 +1,16 @@
-#include "Arduino.h"
+#pragma once
+
 #include "trafficLight.h"
 
-class road : {
+class road {
 private:
   trafficLight tl;
-protected:
-  int carCount = 0;
 public:
+  int carCount = 0;
   int sensorPin;
   void setupTL(int pin);
   void senseCar();
+  void loop();
 };
 
 void road::senseCar(){
@@ -20,4 +21,9 @@ void road::senseCar(){
 void road::setupTL(int pin){
   trafficLight newTL(pin);
   tl = newTL;
+}
+
+void road::loop(){
+  senseCar();
+
 }

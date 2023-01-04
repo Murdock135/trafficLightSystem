@@ -1,5 +1,6 @@
 #include "road.h"
 #include "trafficLight.h"
+using namespace std;
 void control();
 
 //define output pins for sensors later when sensors have been bought
@@ -20,6 +21,7 @@ int TrafficLightOutput_3l = 9;
 int TrafficLightOutput_3r = 9;
 int TrafficLightOutput_4l = 9;
 int TrafficLightOutput_4r = 9;
+
 //set up roads
 road oneL, oneR, twoL, twoR, threeL, threeR, fourL, fourR;
 
@@ -47,7 +49,7 @@ void setup() {
 
   Serial.begin(9600);
   //set up traffic Lights
-  oneL.setupTL( TrafficLightOutput_1l); 
+  oneL.setupTL(TrafficLightOutput_1l);
   oneR.setupTL(TrafficLightOutput_1r);
   twoL.setupTL(TrafficLightOutput_2l);
   twoR.setupTL(TrafficLightOutput_2r);
@@ -55,15 +57,33 @@ void setup() {
   threeR.setupTL(TrafficLightOutput_3r);
   fourL.setupTL(TrafficLightOutput_4l);
   fourL.setupTL(TrafficLightOutput_4r);
-  //keep all traffic Lights turned off first 
+  //keep all traffic Lights turned off first
 }
 
 void loop() {
-  
+  oneL.loop();
+  oneR.loop();
+  twoL.loop();
+  twoR.loop();
+  threeL.loop();
+  threeR.loop();
+  fourL.loop();
+  fourR.loop();
+
+  int carCountoneL = oneL.carCount;
+  int carCountoneR = oneR.carCount;
+  int carCounttwoL = twoL.carCount;
+  int carCounttwoR = twoR.carCount;
+  int carCountthreeL = threeL.carCount;
+  int carCountthreeR = threeR.carCount;
+  int carCountfourL = fourL.carCount;
+  int carCountfourR = fourR.carCount;
+
+  control();
+
   delay(3000);
 }
 
-void control(){
-    oneL.senseCar();
-
+void control() {
+  Serial.println("Your code is working");
 }
