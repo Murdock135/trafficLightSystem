@@ -27,8 +27,8 @@ public:
     digitalWrite(S1, LOW);
   }
   void greenStraightAndRight(){
-  digitalWrite(S0, HIGH);
-  digitalWrite(S1, HIGH);
+    digitalWrite(S0, HIGH);
+    digitalWrite(S1, HIGH);
   }
   bool isRed(){
     bool redStatus = false;
@@ -42,5 +42,5 @@ public:
   void setS1pin(int S1) {
     this->S1 = S1;
   }
-
+  
 };
