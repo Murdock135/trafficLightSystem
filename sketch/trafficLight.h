@@ -15,8 +15,8 @@ public:
     pinMode(S1, OUTPUT);
   }
   void red() {
-    digitalWrite(S0, HIGH);
-    digitalWrite(S1, HIGH);
+    digitalWrite(S0, LOW);
+    digitalWrite(S1, LOW);
   }
   void yellow() {
     digitalWrite(S0, LOW);

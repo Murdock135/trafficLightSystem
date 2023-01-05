@@ -39,7 +39,7 @@ void road::loop() {
     senseCar();
   }
   else{
-    Serial.println("Light is not red and marble count is not being increased as cars move");
+    Serial.print("...");
   }
 }
 
