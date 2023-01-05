@@ -1,43 +1,37 @@
 #pragma once
+
+#include "HardwareSerial.h"
 #include "Arduino.h"
 #include "trafficLight.h"
 
 class road : public trafficLight {
 private:
-  trafficLight tl;
+  int count = 0;
+  int Sensor;
+
 public:
-  int lCount = 0;
-  int rCount = 0;
-  int leftSensor;
-  int rightSensor;
-  road();
-  void setup(int S0, int S1, int leftSensor, int rightSensor);
-  void senseCarLeft();
-  void senseCarRight();
+  road(int S0, int S1, int Sensor);
+  // void setup(int S0, int S1, int Sensor);
+  void senseCar();
   void loop();
+  int getCount() {
+    return count;
+  }
 };
 
-void road::setup(int S0, int S1, int leftSensor, int rightSensor){
-  //setup demux pins for traffic light
-  tl.S0 = S0;
-  tl.S1 = S1;
-  tl.setup();
-  //setup sensors
-  pinMode(leftSensor, OUTPUT);
-  pinMode(rightSensor, OUTPUT);
+road::road(int S0, int S1, int Sensor) : trafficLight(S0, S1){
+  setup(); //setup traffic light
+  pinMode(Sensor, INPUT);  //setup sensors
 }
 
-void road::senseCarLeft(){
-  if(digitalRead(leftSensor)==LOW);
-    ++lCount;
+void road::senseCar() {
+  if (digitalRead(Sensor) == LOW) {
+    Serial.println(count);
+    ++count;
+  }
 }
 
-void road::senseCarRight(){
-  if(digitalRead(rightSensor)==LOW);
-    ++rCount;
-}
-
-void road::loop(){
-  senseCarLeft();
-  senseCarRight();
+void road::loop() {
+  if (isRed() == true)
+    senseCar();
 }
