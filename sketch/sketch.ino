@@ -101,4 +101,6 @@ int greenTime(int trafficDensity) {
     return 6000;
   if (trafficDensity == 3)
     return 8000;
+  if (trafficDensity == 0)
+    return 0;
 }
