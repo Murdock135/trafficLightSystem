@@ -25,7 +25,7 @@ void loop() {
   three.loop();
   four.loop();
   if (i == 1) {
-    delay(10000);
+    delay(20000); //Buffer time to place marbles
   }
 
   control();
