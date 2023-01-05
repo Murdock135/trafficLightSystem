@@ -9,7 +9,8 @@ private:
   int count = 0;
   int Sensor;
 public:
-  road(int S0, int S1, int Sensor);
+  String name;
+  road(String name, int S0, int S1, int Sensor);
   // void setup(int S0, int S1, int Sensor);
   void senseCar();
   void loop();
@@ -20,7 +21,7 @@ public:
   int greenTime();
 };
 
-road::road(int S0, int S1, int Sensor) : trafficLight(S0, S1){
+road::road(String name, int S0, int S1, int Sensor) : trafficLight(S0, S1), name(name){
   setup(); //setup traffic light
   pinMode(Sensor, INPUT);  //setup sensors
 }
@@ -33,8 +34,13 @@ void road::senseCar() {
 }
 
 void road::loop() {
-  if (isRed() == true)
+  if (isRed() == true) {
+    Serial.println(name + ":" + "Light is red and count is now being increased as marbles pass");
     senseCar();
+  }
+  else{
+    Serial.println("Light is not red and marble count is not being increased as cars move");
+  }
 }
 
 int road::calcDensity(){

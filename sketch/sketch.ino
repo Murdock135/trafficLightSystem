@@ -5,29 +5,31 @@ void control();
 
 
 //set up roads
-road one(1, 2, 9);
-road two(3, 4, 10);
-road three(5, 6, 11);
-road four(7, 8, 12);
+road one("one" ,1, 2, 9);
+road two("two" ,3, 4, 10);
+road three("three" ,5, 6, 11);
+road four("four" ,7, 8, 12);
 
 void setup() {
   Serial.begin(9600);
-
-  //call all setups here
-
   one.red();
   two.red();
   three.red();
   four.red();
 }
 
+int i = 1;
 void loop() {
   one.loop();
   two.loop();
   three.loop();
   four.loop();
+  if (i == 1) {
+    delay(10000);
+  }
 
   control();
+  ++i;  
 }
 
 void control() {
@@ -61,13 +63,13 @@ void control() {
     two.greenTime() > four.greenTime() ? delay_time = two.greenTime() : delay_time = four.greenTime();
     delay(delay_time);
 
-    //make one three yellow
+    //make two and four yellow
     two.yellow();
     four.yellow();
 
     delay(500);
 
-    //make one and three red
+    //make two and four red
     two.red();
     four.red();
   } else if ((one.getCount() == 0) && (two.getCount() == 0) && (three.getCount() == 0) && (four.getCount() == 0)) {
