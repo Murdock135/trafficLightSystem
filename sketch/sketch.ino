@@ -2,13 +2,15 @@
 #include "trafficLight.h"
 using namespace std;
 void control();
+int calcDensity(road, road);
+int greenTime(int);
 
 
 //set up roads
-road one("one" ,1, 2, 9);
-road two("two" ,3, 4, 10);
-road three("three" ,5, 6, 11);
-road four("four" ,7, 8, 12);
+road one("one", 1, 2, 9);
+road two("two", 3, 4, 10);
+road three("three", 5, 6, 11);
+road four("four", 7, 8, 12);
 
 void setup() {
   Serial.begin(9600);
@@ -25,25 +27,23 @@ void loop() {
   three.loop();
   four.loop();
   if (i == 1) {
-    delay(20000); //Buffer time to place marbles
+    delay(20000);  //Buffer time to place marbles
   }
 
   control();
-  ++i;  
+  ++i;
 }
 
 void control() {
-  int pairOneThree = one.calcDensity() + three.calcDensity();
-  int pairtwoFour = two.calcDensity() + four.calcDensity();
-  int delay_time;
+  int pairOneThree = calcDensity(one, three);
+  int pairTwoFour = calcDensity(two, four);
 
-  if (((pairOneThree == pairtwoFour) && (pairOneThree != 0)) || (pairOneThree > pairtwoFour)) {
+  if (((pairOneThree == pairTwoFour) && (pairOneThree != 0)) || (pairOneThree > pairTwoFour)) {
     //make one and three green (only straight)
     one.greenStraight();
     three.greenStraight();
 
-    //compare delay time of the pair of roads and pick the larger one
-    one.greenTime() > three.greenTime() ? delay_time = one.greenTime() : delay_time = three.greenTime();
+    int delay_time = greenTime(pairOneThree);
     delay(delay_time);
 
     //make one three yellow
@@ -55,12 +55,12 @@ void control() {
     //make one and three red
     one.red();
     three.red();
-  } else if (pairOneThree < pairtwoFour) {
+  } else if (pairOneThree < pairTwoFour) {
     //make two and four green (only straight)
     two.greenStraight();
     four.greenStraight();
 
-    two.greenTime() > four.greenTime() ? delay_time = two.greenTime() : delay_time = four.greenTime();
+    int delay_time = greenTime(pairTwoFour);
     delay(delay_time);
 
     //make two and four yellow
@@ -75,4 +75,30 @@ void control() {
   } else if ((one.getCount() == 0) && (two.getCount() == 0) && (three.getCount() == 0) && (four.getCount() == 0)) {
     one.greenStraight();  //keep road one green if every road is empty
   }
+}
+
+int calcDensity(road r1, road r2) {
+  //r1 and r2 are a pair of roads
+  //1,2 and 3 indicate levels of traffic density from 1=low to 3=high
+  int r1count = r1.getCount();
+  int r2count = r2.getCount();
+  int total = r1count + r2count;
+  if ((total <= 3) & (total > 0))
+    return 1;
+  else if ((total > 3) && (total < 7))
+    return 2;
+  else if (total >= 7)
+    return 3;
+  else if (total == 0)
+    return 0;
+}
+
+int greenTime(int trafficDensity) {
+  //no greentime for calcDensity==0
+  if (trafficDensity == 1)
+    return 3000;
+  if (trafficDensity == 2)
+    return 6000;
+  if (trafficDensity == 3)
+    return 8000;
 }
