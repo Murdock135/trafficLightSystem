@@ -65,9 +65,10 @@ void controller::keepLightOn(String road, long int requiredDuration, int lightCo
       r2.loop();
       r4.loop();
     }
-    if (lightColor == 10)  //if color was yellow, turn red after duration has passed
+    if (lightColor == 10) {  //if color was yellow, turn red after duration has passed
       r1.red();
-    r3.red();
+      r3.red();
+    }
   } else if ((road == "r2") || (road == "r4")) {
     switch (lightColor) {
       case 00:
@@ -106,9 +107,7 @@ void controller::controlAlgorithm() {
     r4.loop();
     long int greenDuration = this->greenTime(r1r3_density);
     this->keepLightOn("r1", greenDuration, 01);
-    this->keepLightOn("r3", greenDuration, 01);
     this->keepLightOn("r1", 1000, 10);
-    this->keepLightOn("r3", 1000, 10);
   }
 
   else if (r1r3_density < r2r4_density) {
@@ -116,9 +115,7 @@ void controller::controlAlgorithm() {
     r3.loop();
     long int greenDuration = this->greenTime(r2r4_density);
     this->keepLightOn("r2", greenDuration, 01);
-    this->keepLightOn("r4", greenDuration, 01);
     this->keepLightOn("r2", 1000, 10);
-    this->keepLightOn("r4", 1000, 10);
   } else if ((r1.getCount() == 0) && (r2.getCount() == 0) && (r3.getCount() == 0) && (r4.getCount() == 0)) {
     r1.greenStraight();  //keep road one green if every road is empty
   }
