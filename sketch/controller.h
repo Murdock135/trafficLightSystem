@@ -46,15 +46,19 @@ void controller::keepLightOn(String road, unsigned long int requiredDuration, in
       case 00:
         r1.red();
         r3.red();
+        break;
       case 01:
         r1.yellow();
         r3.yellow();
+        break;
       case 10:
         r1.greenStraight();
         r3.greenStraight();
+        break;
       case 11:
         r1.greenStraightAndRight();
         r3.greenStraightAndRight();
+        break;
     }
 
 
@@ -74,15 +78,19 @@ void controller::keepLightOn(String road, unsigned long int requiredDuration, in
       case 00:
         r2.red();
         r4.red();
+        break;
       case 01:
         r2.yellow();
         r4.yellow();
+        break;
       case 10:
         r2.greenStraight();
         r4.greenStraight();
+        break;
       case 11:
         r2.greenStraightAndRight();
         r4.greenStraightAndRight();
+        break;
     }
 
 
