@@ -8,8 +8,8 @@ public:
   controller(road r1, road r2, road r3, road r4)
     : r1(r1), r2(r2), r3(r3), r4(r4) {}
   int calcDensity(road, road);
-  long int greenTime(int);
-  void keepLightOn(String, long int, int);
+  unsigned long int greenTime(int);
+  void keepLightOn(String, unsigned long int, int);
   void controlAlgorithm();
 };
 
@@ -28,7 +28,7 @@ int controller::calcDensity(road firstRoad, road secondRoad) {
   else
     return 0;
 }
-long int controller::greenTime(int trafficDensity) {
+unsigned long int controller::greenTime(int trafficDensity) {
   //no greentime for calcDensity==0
   if (trafficDensity == 1)
     return 3000;
@@ -39,7 +39,7 @@ long int controller::greenTime(int trafficDensity) {
   else
     return 0;
 }
-void controller::keepLightOn(String road, long int requiredDuration, int lightColor) {
+void controller::keepLightOn(String road, unsigned long int requiredDuration, int lightColor) {
   //lightColor: 00 is red, 10 is yellow, 01 is green and 11 is green and straight
   if ((road == "r1") || (road == "r3")) {
     switch (lightColor) {
@@ -58,8 +58,8 @@ void controller::keepLightOn(String road, long int requiredDuration, int lightCo
     }
 
 
-    long int lightStartTime = millis();
-    long int duration = 0;
+    unsigned long int lightStartTime = millis();
+    unsigned long int duration = 0;
     while (duration < requiredDuration) {
       duration = millis() - lightStartTime;
       r2.loop();
@@ -86,8 +86,8 @@ void controller::keepLightOn(String road, long int requiredDuration, int lightCo
     }
 
 
-    long int lightStartTime = millis();
-    long int duration = 0;
+    unsigned long int lightStartTime = millis();
+    unsigned long int duration = 0;
     while (duration < requiredDuration) {
       duration = millis() - lightStartTime;
       r1.loop();
@@ -105,7 +105,7 @@ void controller::controlAlgorithm() {
   if (((r1r3_density == r2r4_density) && (r1r3_density != 0)) || (r1r3_density > r2r4_density)) {
     r2.loop();
     r4.loop();
-    long int greenDuration = this->greenTime(r1r3_density);
+    unsigned long int greenDuration = this->greenTime(r1r3_density);
     this->keepLightOn("r1", greenDuration, 01);
     this->keepLightOn("r1", 1000, 10);
   }
@@ -113,7 +113,7 @@ void controller::controlAlgorithm() {
   else if (r1r3_density < r2r4_density) {
     r1.loop();
     r3.loop();
-    long int greenDuration = this->greenTime(r2r4_density);
+    unsigned long int greenDuration = this->greenTime(r2r4_density);
     this->keepLightOn("r2", greenDuration, 01);
     this->keepLightOn("r2", 1000, 10);
   } else if ((r1.getCount() == 0) && (r2.getCount() == 0) && (r3.getCount() == 0) && (r4.getCount() == 0)) {
