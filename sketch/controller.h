@@ -46,10 +46,10 @@ void controller::keepLightOn(String road, unsigned long int requiredDuration, in
       case 00:
         r1.red();
         r3.red();
-      case 10:
+      case 01:
         r1.yellow();
         r3.yellow();
-      case 01:
+      case 10:
         r1.greenStraight();
         r3.greenStraight();
       case 11:
@@ -74,10 +74,10 @@ void controller::keepLightOn(String road, unsigned long int requiredDuration, in
       case 00:
         r2.red();
         r4.red();
-      case 10:
+      case 01:
         r2.yellow();
         r4.yellow();
-      case 01:
+      case 10:
         r2.greenStraight();
         r4.greenStraight();
       case 11:
@@ -93,9 +93,10 @@ void controller::keepLightOn(String road, unsigned long int requiredDuration, in
       r1.loop();
       r3.loop();
     }
-    if (lightColor == 10)  //if color was yellow, turn red after duration has passed
+    if (lightColor == 10) {  //if color was yellow, turn red after duration has passed
       r2.red();
-    r4.red();
+      r4.red();
+    }
   }
 }
 void controller::controlAlgorithm() {
@@ -103,19 +104,19 @@ void controller::controlAlgorithm() {
   int r2r4_density = calcDensity(r2, r4);
 
   if (((r1r3_density == r2r4_density) && (r1r3_density != 0)) || (r1r3_density > r2r4_density)) {
-    r2.loop();
-    r4.loop();
     unsigned long int greenDuration = this->greenTime(r1r3_density);
     this->keepLightOn("r1", greenDuration, 01);
     this->keepLightOn("r1", 1000, 10);
+    r1.red();
+    r3.red();
   }
 
   else if (r1r3_density < r2r4_density) {
-    r1.loop();
-    r3.loop();
     unsigned long int greenDuration = this->greenTime(r2r4_density);
     this->keepLightOn("r2", greenDuration, 01);
     this->keepLightOn("r2", 1000, 10);
+    r2.red();
+    r4.red();
   } else if ((r1.getCount() == 0) && (r2.getCount() == 0) && (r3.getCount() == 0) && (r4.getCount() == 0)) {
     r1.greenStraight();  //keep road one green if every road is empty
   }
