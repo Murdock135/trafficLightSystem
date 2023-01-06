@@ -13,7 +13,7 @@ road r1("r1", 1, 2, 9);
 road r2("r2", 3, 4, 10);
 road r3("r3", 5, 6, 11);
 road r4("r4", 7, 8, 12);
-controller c;
+controller c(r1, r2, r3, r4);
 int yellowDuration = 500;
 
 void setup() {
@@ -38,5 +38,5 @@ void loop() {
     }
   }
   i = 2;
-  c.controlAlgorithm(r1, r2, r3, r4);
+  c.controlAlgorithm();
 }

@@ -7,7 +7,7 @@
 class road : public trafficLight {
 private:
   int count = 0;
-  int Sensor;
+  int Sensor = 0;
 public:
   String name;
   road(String name, int S0, int S1, int Sensor);
@@ -35,7 +35,7 @@ void road::senseCar() {
 
 void road::loop() {
   if (isRed() == true) {
-    Serial.println(name + ":" + "Light is red and count is now being increased as marbles pass");
+    Serial.println(name + ":" + "00");
     senseCar();
   }
   else{
