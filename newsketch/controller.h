@@ -16,11 +16,11 @@ public:
   }
 
 
-  int trafficDensity(int pairTotal) {
+  int trafficDensity(int carCount) {
     int density;
-    if (pairTotal < 5)
+    if (carCount < 5)
       density = 1;
-    else if ((pairTotal > 4 && (pairTotal < 8)))
+    else if ((carCount > 4 && (carCount < 8)))
       density = 2;
     else
       density = 3;
@@ -47,34 +47,60 @@ public:
   }
   void control_algo(road& r1, road& r2, road& r3, road& r4) {
     Serial.println("algo initiating");
-    int x = r1.getCount() + r3.getCount();
-    int y = r2.getCount() + r4.getCount();
-    Serial.println(x);
-    Serial.println(y);
-    int dx = trafficDensity(x);
-    int dy = trafficDensity(y);
-    Serial.println(dx);
-    Serial.println(dy);
-    int greenTime = greenDuration(dx);
+    int dr1 = trafficDensity(r1.getCount());
+    int dr2 = trafficDensity(r2.getCount());
+    int dr3 = trafficDensity(r3.getCount());
+    int dr4 = trafficDensity(r4.getCount());
+    int greenTime = greenDuration(dr1);
+    int drs[] = { dr1, dr2, dr3, dr4 };
+    int drSize = 4;
+    int* drPtrs[4];
+    drPtrs[0] = &dr1;
+    drPtrs[1] = &dr2;
+    drPtrs[2] = &dr3;
+    drPtrs[3] = &dr4;
+    int largestdr = largestElement(drs, 4);
 
-    if (dx > dy) {
+    if (*drPtrs[0] == largestdr) {
       r1.turnGreen();
-      r3.turnGreen();
-      greenTime = greenDuration(dx);
+      greenTime = greenDuration(dr1);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
-      Serial.println("r1 and r3 given green");
-    } else if (dx < dy) {
+      Serial.println("r1 given green");
+      r2.turnRed();
+      r3.turnRed();
+      r4.turnRed();
+    } else if (*drPtrs[1] == largestdr) {
       r2.turnGreen();
-      r4.turnGreen();
-      greenTime = greenDuration(dy);
+      greenTime = greenDuration(dr2);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
-      Serial.println("r2 and r4 given green");
-    } else {
-      Serial.println("Both are equal, r1 and r3 given green");
-      r1.turnGreen();
+      Serial.println("r2 given green");
+      r1.turnRed();
+      r3.turnRed();
+      r4.turnRed();
+    } else if (*drPtrs[2] == largestdr) {
       r3.turnGreen();
-      greenTime = greenDuration(dx);
+      greenTime = greenDuration(dr3);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
+      r1.turnRed();
+      r2.turnRed();
+      r4.turnRed();
+    } else {
+      r4.turnGreen();
+      greenTime = greenDuration(dr4);
+      runProgramForDuration(greenTime, r1, r2, r3, r4);
+      r1.turnRed();
+      r2.turnRed();
+      r3.turnRed();
     }
+  }
+
+  int largestElement(int arr[], int size) {
+    int max = arr[0];
+    for (int i = 1; i < size; i++) {
+      if (max < arr[i]) {
+        max = arr[i];
+      }
+    }
+    return max;
   }
 };
