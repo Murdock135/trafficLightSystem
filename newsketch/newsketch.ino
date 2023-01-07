@@ -5,6 +5,7 @@
 
 road r1("r1", 7, 13, 12);
 road r2("r2", 6, 11, 10);
+road r3("r3", 5, 8, 9);
 infraRed i(7);
 trafficLight tl1(13, 12);
 controller c;
@@ -13,6 +14,7 @@ void setup() {
   Serial.begin(1200);
   r1.setup();
   r2.setup();
+  r3.setup();
   i.setup();
   c.setup();
   tl1.setup();
@@ -41,16 +43,18 @@ void loop() {
   // // if (s == 1) {
   r1.turnRed();
   r2.turnRed();
+  r3.turnRed();
 
   while (duration < 10000) {
     duration = millis() - startTime;
     r1.Sense();
     r2.Sense();
+    r3.Sense();
   }
   Serial.println(r1.getCount());
   Serial.println(r2.getCount());
-
+  Serial.println(r3.getCount());
   //   s = 2;
   // }
-  c.control_algo_between2roads(r1, r2);
+  c.control_algo_between3roads(r1, r2, r3);
 }
