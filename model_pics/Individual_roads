@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-07T17:16:08.289Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" version="20.8.3" etag="iPjZN8aXKBD7CjWxIbWu" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-07T17:29:53.286Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" version="20.8.3" etag="OK92039L5MafQJ7bbpOe" type="github">
   <diagram id="oBhZu-gdNDPX92UxZpad" name="Page-1">
-    <mxGraphModel dx="2273" dy="309" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2879" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -424,7 +424,7 @@
         <mxCell id="Q3Md8p9hEjPum_2hPHsz-127" value="*drPtrs[1]==largest" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-770" y="715" width="120" height="105.83" as="geometry" />
         </mxCell>
-        <mxCell id="Q3Md8p9hEjPum_2hPHsz-130" value="same process as the one for *drPtrs[0]" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeColor=#FF0000;" vertex="1" parent="1">
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-130" value="same process as the one for when *drPtrs[0] is largest" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeColor=#FF0000;" vertex="1" parent="1">
           <mxGeometry x="-640" y="880" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Q3Md8p9hEjPum_2hPHsz-137" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-132" target="Q3Md8p9hEjPum_2hPHsz-146">
