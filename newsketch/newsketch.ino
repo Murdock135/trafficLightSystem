@@ -3,12 +3,10 @@
 #include "controller.h"
 #include "InfraRed.h"
 
-road r1("r1", 7, 13, 12);
-road r2("r2", 6, 11, 10);
-road r3("r3", 5, 8, 9);
-road r4();
-infraRed i(7);
-trafficLight tl1(13, 12);
+road r1("r1", 10, 2, 3);
+road r2("r2", 11, 4, 5);
+road r3("r3", 12, 6, 7);
+road r4("r4", 13, 8, 9);
 controller c;
 
 void setup() {
@@ -17,9 +15,7 @@ void setup() {
   r2.setup();
   r3.setup();
   r4.setup();
-  i.setup();
   c.setup();
-  tl1.setup();
 }
 int s = 1;
 void loop() {

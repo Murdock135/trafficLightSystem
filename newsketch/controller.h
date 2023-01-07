@@ -16,7 +16,7 @@ public:
   }
 
 
-  int trafficDensity(int pairTota) {
+  int trafficDensity(int pairTotal) {
     int density;
     if (pairTotal < 5)
       density = 1;
@@ -45,18 +45,18 @@ public:
     Serial.println("algo initiating");
     int x = r1.getCount() + r3.getCount();
     int y = r2.getCount() + r4.getCount();
-    int dx = trafficDensityTwoRoads(x);
-    int dy = trafficDensityTwoRoads(y);
+    int dx = trafficDensity(x);
+    int dy = trafficDensity(y);
     Serial.println(dx);
     Serial.println(dy);
     int greenTime = greenDuration(dx);
 
-    if (x > y) {
+    if (dx > dy) {
       r1.turnGreen();
       r3.turnGreen();
       greenTime = greenDuration(dx);
       Serial.println("r1 and r3 given green");
-    } else if (x < y) {
+    } else if (dx < dy) {
       r2.turnGreen();
       r4.turnGreen();
       greenTime = greenDuration(dy);

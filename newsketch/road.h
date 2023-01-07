@@ -12,8 +12,8 @@ private:
   String name;
   int count = 0;
 public:
-  road(String name, int infraRedpin, int trafficLightRedpin, int trafficLightGreenpin)
-    : infraRed(infraRedpin), trafficLight(trafficLightRedpin, trafficLightGreenpin), name(name) {}
+  road(String name, int infraRedpin, int s0demux, int s1demux)
+    : infraRed(infraRedpin), trafficLight(s0demux, s1demux), name(name) {}
   void setup() {
     Serial.begin(1200);
     trafficLight::setup();
@@ -32,6 +32,7 @@ public:
     if (isRed() == true) {
       Serial.println("red");
       if (output() == 0) {
+        Serial.print(name);
         Serial.println("Detected");
         count = count + 1;
       }
