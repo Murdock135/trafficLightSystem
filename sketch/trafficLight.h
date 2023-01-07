@@ -1,3 +1,4 @@
+#include "HardwareSerial.h"
 #pragma once
 #include "Arduino.h"
 #include "pins_arduino.h"
@@ -8,10 +9,11 @@ protected:
   int S0;
   int S1;
 public:
-  trafficLight(int tempS0, int tempS1)
-    : S0(tempS0), S1(tempS1) {}
+  trafficLight(int S0, int S1)
+    : S0(S0), S1(S1) {}
   trafficLight();
   void setup() {
+    Serial.begin(1200);
     pinMode(S0, OUTPUT);
     pinMode(S1, OUTPUT);
   }
@@ -20,12 +22,12 @@ public:
     digitalWrite(S1, LOW);
   }
   void yellow() {
-    digitalWrite(S0, LOW);
-    digitalWrite(S1, HIGH);
-  }
-  void greenStraight() {
     digitalWrite(S0, HIGH);
     digitalWrite(S1, LOW);
+  }
+  void greenStraight() {
+    digitalWrite(S0, LOW);
+    digitalWrite(S1, HIGH);
   }
   void greenStraightAndRight() {
     digitalWrite(S0, HIGH);
@@ -36,5 +38,12 @@ public:
     if ((digitalRead(S0) == LOW) && (digitalRead(S1) == LOW))
       redStatus = true;
     return redStatus;
+  }
+  void printPins(){
+    Serial.print("Pins are ");
+    Serial.print(S0);
+    Serial.print(" and ");
+    Serial.print(S1);
+    Serial.println("");
   }
 };
