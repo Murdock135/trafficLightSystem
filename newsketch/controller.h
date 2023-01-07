@@ -20,15 +20,19 @@ public:
     int density;
     if (pairTotal < 5)
       density = 1;
-    else
+    else if ((pairTotal > 4 && (pairTotal < 8)))
       density = 2;
+    else
+      density = 3;
     return density;
   }
   int greenDuration(int trafficDensity) {
     if (trafficDensity == 1)
       return 2000;
-    else
+    else if (trafficDensity == 2)
       return 5000;
+    else
+      return 7000;
   }
   void runProgramForDuration(int d, road& r1, road& r2, road& r3, road& r4) {
     int startTime = millis();
@@ -45,6 +49,8 @@ public:
     Serial.println("algo initiating");
     int x = r1.getCount() + r3.getCount();
     int y = r2.getCount() + r4.getCount();
+    Serial.println(x);
+    Serial.println(y);
     int dx = trafficDensity(x);
     int dy = trafficDensity(y);
     Serial.println(dx);
@@ -55,18 +61,20 @@ public:
       r1.turnGreen();
       r3.turnGreen();
       greenTime = greenDuration(dx);
+      runProgramForDuration(greenTime, r1, r2, r3, r4);
       Serial.println("r1 and r3 given green");
     } else if (dx < dy) {
       r2.turnGreen();
       r4.turnGreen();
       greenTime = greenDuration(dy);
+      runProgramForDuration(greenTime, r1, r2, r3, r4);
       Serial.println("r2 and r4 given green");
     } else {
       Serial.println("Both are equal, r1 and r3 given green");
       r1.turnGreen();
       r3.turnGreen();
       greenTime = greenDuration(dx);
+      runProgramForDuration(greenTime, r1, r2, r3, r4);
     }
-    runProgramForDuration(greenTime, r1, r2, r3, r4);
   }
 };

@@ -28,6 +28,16 @@ public:
     digitalWrite(s0pin, LOW);
     digitalWrite(s1pin, HIGH);
   }
+
+  void turnGreenTime(int time) {
+    int startTime = millis();
+    int duration = 0;
+    while (duration < time) {
+      duration = millis() - startTime;
+      turnGreen();
+    }
+  }
+
   bool isRed() {
     bool red;
     if ((digitalRead(s0pin) == LOW) && (digitalRead(s1pin) == LOW)) {
