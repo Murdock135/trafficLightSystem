@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-07T17:03:23.001Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" version="20.8.3" etag="yT7dS4rn-gYDaUpZ6o1i" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-07T17:05:43.108Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" version="20.8.3" etag="toMzvwGTnBujjK8JIdhZ" type="github">
   <diagram id="oBhZu-gdNDPX92UxZpad" name="Page-1">
     <mxGraphModel dx="2755" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -169,7 +169,7 @@
             <mxPoint x="-320" y="830" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Q3Md8p9hEjPum_2hPHsz-49" value="give green to r1" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-49" value="give green to r1&lt;br&gt;give red to r2&lt;br&gt;give red to r3&lt;br&gt;give red to r4" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-380" y="715" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Q3Md8p9hEjPum_2hPHsz-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="Q3Md8p9hEjPum_2hPHsz-56">
