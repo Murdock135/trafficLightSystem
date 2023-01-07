@@ -16,10 +16,9 @@ public:
   }
 
 
-  int trafficDensityTwoRoads(road& r1, road& r2) {
+  int trafficDensity(int pairTota) {
     int density;
-    int total = r1.getCount() + r2.getCount();
-    if (total < 10)
+    if (pairTotal < 5)
       density = 1;
     else
       density = 2;
@@ -29,9 +28,9 @@ public:
     if (trafficDensity == 1)
       return 2000;
     else
-      return 4000;
+      return 5000;
   }
-  void runProgramForDuration(int d, road& r1, road& r2, road& r3) {
+  void runProgramForDuration(int d, road& r1, road& r2, road& r3, road& r4) {
     int startTime = millis();
     int duration = 0;
     while (duration < d) {
@@ -39,27 +38,35 @@ public:
       r1.Sense();
       r2.Sense();
       r3.Sense();
+      r4.Sense();
     }
   }
-  void control_algo_between3roads(road& r1, road& r2, road& r3) {
-    //assuming road1 and road3 are a pair of opposing roads
+  void control_algo(road& r1, road& r2, road& r3, road& r4) {
     Serial.println("algo initiating");
     int x = r1.getCount() + r3.getCount();
-    int y = r2.getCount();
-    Serial.println(x);
-    Serial.println(y);
+    int y = r2.getCount() + r4.getCount();
+    int dx = trafficDensityTwoRoads(x);
+    int dy = trafficDensityTwoRoads(y);
+    Serial.println(dx);
+    Serial.println(dy);
+    int greenTime = greenDuration(dx);
+
     if (x > y) {
       r1.turnGreen();
       r3.turnGreen();
+      greenTime = greenDuration(dx);
       Serial.println("r1 and r3 given green");
     } else if (x < y) {
       r2.turnGreen();
-      Serial.println("r2 given green");
+      r4.turnGreen();
+      greenTime = greenDuration(dy);
+      Serial.println("r2 and r4 given green");
     } else {
       Serial.println("Both are equal, r1 and r3 given green");
       r1.turnGreen();
       r3.turnGreen();
+      greenTime = greenDuration(dx);
     }
-    runProgramForDuration(3000, r1, r2, r3);
+    runProgramForDuration(greenTime, r1, r2, r3, r4);
   }
 };

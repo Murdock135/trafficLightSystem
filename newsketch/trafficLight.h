@@ -5,27 +5,32 @@
 
 class trafficLight {
 private:
-  int inputPinRed;
-  int inputPinGreen;
+  int s0pin;
+  int s1pin;
 public:
-  trafficLight(int inputPinRed, int inputPinGreen)
-    : inputPinRed(inputPinRed), inputPinGreen(inputPinGreen) {}
+  trafficLight(int s0, int s1)
+    : s0pin(s0), s1pin(s1) {}
+
   void setup() {
     Serial.begin(1200);
-    pinMode(inputPinRed, OUTPUT);
-    pinMode(inputPinGreen, OUTPUT);
+    pinMode(s0pin, OUTPUT);
+    pinMode(s1pin, OUTPUT);
   }
   void turnRed() {
-    digitalWrite(inputPinRed, HIGH);
-    digitalWrite(inputPinGreen, LOW);
+    digitalWrite(s0pin, LOW);
+    digitalWrite(s1pin, LOW);
   }
   void turnGreen() {
-    digitalWrite(inputPinRed, LOW);
-    digitalWrite(inputPinGreen, HIGH);
+    digitalWrite(s0pin, LOW);
+    digitalWrite(s1pin, HIGH);
+  }
+  void turnYellow() {
+    digitalWrite(s0pin, HIGH);
+    digitalWrite(s1pin, LOW);
   }
   bool isRed() {
     bool red;
-    if (digitalRead(inputPinRed) == HIGH) {
+    if ((digitalRead(s0pin) == LOW) && (digitalRead(s1pin) == LOW)) {
       red = true;
     } else {
       red = false;
@@ -34,7 +39,7 @@ public:
   }
   bool isGreen() {
     bool green;
-    if (digitalRead(inputPinGreen) == HIGH) {
+    if ((digitalRead(s0pin) == LOW) && (digitalRead(s1pin) == HIGH)) {
       green = true;
     } else {
       green = false;
