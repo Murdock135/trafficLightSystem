@@ -47,10 +47,15 @@ public:
   }
   void control_algo(road& r1, road& r2, road& r3, road& r4) {
     Serial.println("algo initiating");
-    int dr1 = trafficDensity(r1.getCount());
-    int dr2 = trafficDensity(r2.getCount());
-    int dr3 = trafficDensity(r3.getCount());
-    int dr4 = trafficDensity(r4.getCount());
+    int countR1 = r1.getCount();
+    int countR2 = r2.getCount();
+    int countR3 = r3.getCount();
+    int countR4 = r4.getCount();
+
+    int dr1 = trafficDensity(countR1);
+    int dr2 = trafficDensity(countR2);
+    int dr3 = trafficDensity(countR3);
+    int dr4 = trafficDensity(countR4);    
     int greenTime = greenDuration(dr1);
     int drs[] = { dr1, dr2, dr3, dr4 };
     int drSize = 4;
@@ -65,15 +70,17 @@ public:
       r1.turnGreen();
       greenTime = greenDuration(dr1);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
-      Serial.println("r1 given green");
+  
       r2.turnRed();
       r3.turnRed();
       r4.turnRed();
+
     } else if (*drPtrs[1] == largestdr) {
       r2.turnGreen();
       greenTime = greenDuration(dr2);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
-      Serial.println("r2 given green");
+      r2.turnYellow();
+      runProgramForDuration(1000, r1, r2, r3, r4);
       r1.turnRed();
       r3.turnRed();
       r4.turnRed();
@@ -81,17 +88,21 @@ public:
       r3.turnGreen();
       greenTime = greenDuration(dr3);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
+      r3.turnYellow();
+      runProgramForDuration(1000, r1, r2, r3, r4);
       r1.turnRed();
       r2.turnRed();
       r4.turnRed();
-    } else {
+    } else if (*drPtrs[3] == largestdr) {
       r4.turnGreen();
       greenTime = greenDuration(dr4);
       runProgramForDuration(greenTime, r1, r2, r3, r4);
+      r4.turnYellow();
+      runProgramForDuration(1000, r1, r2, r3, r4);
       r1.turnRed();
       r2.turnRed();
       r3.turnRed();
-    }
+    } 
   }
 
   int largestElement(int arr[], int size) {
