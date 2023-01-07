@@ -7,6 +7,7 @@
 
 class controller {
 private:
+int prev = 1;
 public:
   void setup() {
     Serial.begin(1200);
@@ -14,7 +15,6 @@ public:
   void increaseCarCount(road& r) {
     r.increaseCarCount();
   }
-
 
   int trafficDensity(int carCount) {
     int density;
@@ -34,7 +34,7 @@ public:
     else
       return 7000;
   }
-  void runProgramForDuration(int d, road& r1, road& r2, road& r3, road& r4) {
+  void senseAllForDuration(int d, road& r1, road& r2, road& r3, road& r4) {
     int startTime = millis();
     int duration = 0;
     while (duration < d) {
@@ -68,40 +68,63 @@ public:
 
     if (*drPtrs[0] == largestdr) {
       r1.turnGreen();
-      greenTime = greenDuration(dr1);
-      runProgramForDuration(greenTime, r1, r2, r3, r4);
-  
+
       r2.turnRed();
       r3.turnRed();
       r4.turnRed();
 
+      greenTime = greenDuration(dr1);
+      senseAllForDuration(greenTime, r1, r2, r3, r4);
+
+      if (prev != 1) {
+        r1.turnYellow();
+        senseAllForDuration(1000, r1, r2, r3, r4);
+        r1.turnRed();
+      }
+      prev = 1;
+
     } else if (*drPtrs[1] == largestdr) {
+
       r2.turnGreen();
-      greenTime = greenDuration(dr2);
-      runProgramForDuration(greenTime, r1, r2, r3, r4);
-      r2.turnYellow();
-      runProgramForDuration(1000, r1, r2, r3, r4);
+
       r1.turnRed();
       r3.turnRed();
       r4.turnRed();
+
+      greenTime = greenDuration(dr2);
+      senseAllForDuration(greenTime, r1, r2, r3, r4);
+      r2.turnYellow();
+      senseAllForDuration(1000, r1, r2, r3, r4);
+      prev = 2;
+      
     } else if (*drPtrs[2] == largestdr) {
       r3.turnGreen();
-      greenTime = greenDuration(dr3);
-      runProgramForDuration(greenTime, r1, r2, r3, r4);
-      r3.turnYellow();
-      runProgramForDuration(1000, r1, r2, r3, r4);
+
       r1.turnRed();
       r2.turnRed();
       r4.turnRed();
+
+      greenTime = greenDuration(dr3);
+      senseAllForDuration(greenTime, r1, r2, r3, r4);
+      r3.turnYellow();
+      senseAllForDuration(1000, r1, r2, r3, r4);
+
+      prev = 3;
+      
     } else if (*drPtrs[3] == largestdr) {
       r4.turnGreen();
-      greenTime = greenDuration(dr4);
-      runProgramForDuration(greenTime, r1, r2, r3, r4);
-      r4.turnYellow();
-      runProgramForDuration(1000, r1, r2, r3, r4);
+
       r1.turnRed();
       r2.turnRed();
       r3.turnRed();
+
+      greenTime = greenDuration(dr4);
+      senseAllForDuration(greenTime, r1, r2, r3, r4);
+      r4.turnYellow();
+      senseAllForDuration(1000, r1, r2, r3, r4);
+
+      prev = 4;
+  
     } 
   }
 
