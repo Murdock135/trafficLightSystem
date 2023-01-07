@@ -28,4 +28,19 @@ public:
   void increaseCarCount() {
     ++count;
   }
+  void Sense() {
+    if (isRed() == true) {
+      Serial.println("red");
+      if (output() == 0) {
+        Serial.println("Detected");
+        count = count + 1;
+      }
+    } else if (isGreen() == true) {
+      Serial.println("green");
+      setCount(0);
+      count = 0;
+    } else {
+      Serial.println("not green or red");
+    }
+  }
 };

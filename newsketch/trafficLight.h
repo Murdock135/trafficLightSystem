@@ -27,11 +27,18 @@ public:
     bool red;
     if (digitalRead(inputPinRed) == HIGH) {
       red = true;
-      Serial.println("Red");
     } else {
       red = false;
-      Serial.println("Green");
     }
     return red;
+  }
+  bool isGreen() {
+    bool green;
+    if (digitalRead(inputPinGreen) == HIGH) {
+      green = true;
+    } else {
+      green = false;
+    }
+    return green;
   }
 };
