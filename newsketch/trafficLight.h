@@ -21,12 +21,12 @@ public:
     digitalWrite(s1pin, LOW);
   }
   void turnGreen() {
-    digitalWrite(s0pin, LOW);
-    digitalWrite(s1pin, HIGH);
-  }
-  void turnYellow() {
     digitalWrite(s0pin, HIGH);
     digitalWrite(s1pin, LOW);
+  }
+  void turnYellow() {
+    digitalWrite(s0pin, LOW);
+    digitalWrite(s1pin, HIGH);
   }
   bool isRed() {
     bool red;
@@ -39,7 +39,7 @@ public:
   }
   bool isGreen() {
     bool green;
-    if ((digitalRead(s0pin) == LOW) && (digitalRead(s1pin) == HIGH)) {
+    if ((digitalRead(s0pin) == HIGH) && (digitalRead(s1pin) == LOW)) {
       green = true;
     } else {
       green = false;

@@ -38,24 +38,32 @@ void loop() {
   // r1.increaseCarCount();
   int startTime = millis();
   int duration = 0;
-  // // if (s == 1) {
-  r1.turnRed();
-  r2.turnRed();
-  r3.turnRed();
-  r4.turnRed();
+  if (s == 1) {
+    r1.turnRed();
+    r2.turnRed();
+    r3.turnRed();
+    r4.turnRed();
 
-  while (duration < 10000) {
-    duration = millis() - startTime;
+    while (duration < 2000) {
+      duration = millis() - startTime;
+      if(duration%1000==0){
+        Serial.println(duration);
+      }
+      r1.Sense();
+      r2.Sense();
+      r3.Sense();
+      r4.Sense();
+    }
     r1.Sense();
     r2.Sense();
     r3.Sense();
     r4.Sense();
+
+    Serial.println(r1.getCount());
+    Serial.println(r2.getCount());
+    Serial.println(r3.getCount());
+    Serial.println(r4.getCount());
+    s = 2;
   }
-  Serial.println(r1.getCount());
-  Serial.println(r2.getCount());
-  Serial.println(r3.getCount());
-  Serial.println(r4.getCount());
-  //   s = 2;
-  // }
   c.control_algo(r1, r2, r3, r4);
 }

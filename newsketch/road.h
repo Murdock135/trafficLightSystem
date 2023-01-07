@@ -29,19 +29,19 @@ public:
     ++count;
   }
   void Sense() {
+    Serial.print(name);
     if (isRed() == true) {
-      Serial.println("red");
+      Serial.println(": red");
       if (output() == 0) {
-        Serial.print(name);
-        Serial.println("Detected");
+        Serial.println(" Detected");
         count = count + 1;
       }
     } else if (isGreen() == true) {
-      Serial.println("green");
+      Serial.println(" green");
       setCount(0);
       count = 0;
     } else {
-      Serial.println("not green or red");
+      Serial.println(" not green or red");
     }
   }
 };
