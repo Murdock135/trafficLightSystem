@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-07T16:52:22.934Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" version="20.8.3" etag="IZdCDZo8w9gutI3paIOy" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-07T16:58:18.841Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" version="20.8.3" etag="1MMHrYFBBJsaXASnbp__" type="github">
   <diagram id="oBhZu-gdNDPX92UxZpad" name="Page-1">
-    <mxGraphModel dx="2702" dy="541" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3370" dy="902" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -297,8 +297,67 @@
         <mxCell id="Q3Md8p9hEjPum_2hPHsz-86" value="Sense for cars in all roads" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
           <mxGeometry x="400" y="940" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Q3Md8p9hEjPum_2hPHsz-90" value="2" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-90" value="3" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="442.5" y="1030" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-92" target="Q3Md8p9hEjPum_2hPHsz-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-99" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Q3Md8p9hEjPum_2hPHsz-94">
+          <mxGeometry x="-0.383" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-92" target="Q3Md8p9hEjPum_2hPHsz-95">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-100" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Q3Md8p9hEjPum_2hPHsz-96">
+          <mxGeometry x="-0.5956" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-92" value="is light red?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="120" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-93" target="Q3Md8p9hEjPum_2hPHsz-101">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-107" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Q3Md8p9hEjPum_2hPHsz-102">
+          <mxGeometry x="-0.509" y="-6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-93" target="Q3Md8p9hEjPum_2hPHsz-103">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-109" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Q3Md8p9hEjPum_2hPHsz-105">
+          <mxGeometry x="-0.332" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-93" value="is Sensor pin ==0" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1195" y="205" width="95" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-95" target="Q3Md8p9hEjPum_2hPHsz-103">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-95" value="car count = 0" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="240" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-98" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-97" target="Q3Md8p9hEjPum_2hPHsz-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-97" value="3" style="shape=offPageConnector;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1062.5" y="50" width="35" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q3Md8p9hEjPum_2hPHsz-101" target="Q3Md8p9hEjPum_2hPHsz-103">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-101" value="increase car count by 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Q3Md8p9hEjPum_2hPHsz-103" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="410" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
